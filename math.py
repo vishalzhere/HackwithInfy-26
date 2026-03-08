@@ -50,6 +50,16 @@ class Solution(object):
                 digits[i] = 0
 
         return [1] + digits
+
+    def trailingZeroes(self, n):
+
+        count = 0
+
+        while n > 0:
+            n //= 5
+            count += n
+
+        return count
     
 obj = Solution()
-print(obj.plusOne([1,2,5,6,7,8,9]))
+print(obj.trailingZeroes(34))
