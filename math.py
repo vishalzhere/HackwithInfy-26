@@ -23,6 +23,33 @@ class Solution(object):
                 right = mid-1
 
         return right
+
+    def isPalindrome(self, x):
+
+        if x < 0:
+            return False
+
+        rev = 0
+        original = x
+
+        while x > 0:
+            digit = x % 10
+            rev = rev * 10 + digit
+            x //= 10
+
+        return rev == original
+
+    def plusOne(self, digits):
+        n = len(digits)
+        for i in range(n-1,-1,-1):
+            if digits[i]<9:
+                digits[i]+=1
+                return digits
+
+            else:
+                digits[i] = 0
+
+        return [1] + digits
     
 obj = Solution()
-print(obj.mySqrt(4))
+print(obj.plusOne([1,2,5,6,7,8,9]))
