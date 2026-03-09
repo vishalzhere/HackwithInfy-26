@@ -60,6 +60,36 @@ class Solution(object):
             count += n
 
         return count
+
+    def maxPoints(self, points):
+        
+        if len(points) <= 2:
+            return len(points)
+
+        result = 0
+
+        for i in range(len(points)):
+            slopes = {}
+
+            for j in range(i+1,len(points)):
+
+                dx = points[j][0] - points[i][0]
+                dy = points[j][1] - points[i][1]
+
+                if dx ==0 :
+                    slope = 'inf'
+                else:
+                    slope = float(dy)/dx
+
+                slopes[slope]  = slopes.get(slope,1) + 1
+                result = max(result, slopes[slope])
+
+        return result
+
+    def myPow(self, x, n):
+        return x**n
+        
     
 obj = Solution()
-print(obj.trailingZeroes(34))
+print(obj.maxPoints([[1,1],[2,2],[3,3]]))
+print(obj.myPow(9,8))
