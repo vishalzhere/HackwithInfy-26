@@ -53,6 +53,31 @@ class LinkedList:
             
             prev.next = temp.next
 
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+ 
+        dummy = Node(0) 
+        curr = dummy
+        carry = 0
+        sum = 0
+        while l1!=None or l2!=None or carry!=0:
+
+            sum = carry
+
+            if l1!=None:
+                sum += l1.data
+                l1 = l1.next
+
+            if l2!=None:
+                sum += l2.data
+                l2 = l2.next
+
+            curr.next  = Node(sum%10)
+            carry = sum//10
+            curr = curr.next
+
+        return dummy.next
+
 
 ll = LinkedList()
 
@@ -63,9 +88,23 @@ ll.insert_at_begin(34)
 ll.insert_at_end(8)
 ll.display()
 
-ll.delete_node(34)
-ll.display()
 
-ll.delete_node(76)
-ll.display()
+l2 = LinkedList()
+l2.insert_at_begin(3)
+l2.insert_at_begin(3)
+l2.insert_at_begin(3)
+l2.insert_at_begin(3)
+l2.insert_at_begin(3)
 
+l2.display()
+
+obj = Solution()
+
+
+result = obj.addTwoNumbers(ll.head, l2.head)
+
+temp = result
+while temp:
+    print(temp.data, end=" -> ")
+    temp = temp.next
+print("None")
